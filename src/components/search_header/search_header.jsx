@@ -6,8 +6,8 @@ class SearchHeader extends Component {
 
     handleSearch(event){
         event.preventDefault();
-        const name = this.inputRef.current.value;
-        console.log(name);
+        const query = this.inputRef.current.value;
+        this.props.onSearch(query);
         this.inputRef.current.value = "";
     }
 

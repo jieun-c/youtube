@@ -4,9 +4,10 @@ import styles from './video_list.module.css';
 
 class VideoList extends Component {
     render() {
+        const {videos} = this.props;
         return (
             <ul className={styles.videos}>
-                {this.props.videos.map((video) => (
+                {videos && videos.map((video) => (
                     <VideoItem key = {video.id} video = {video} />
                 ))}
             </ul>

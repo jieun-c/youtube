@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './app.css';
+import styles from './app.module.css';
 import SearchHeader from './components/search_header/search_header';
 import VideoList from './components/video_list/video_list';
 
@@ -8,24 +8,24 @@ class App extends Component {
     videos: []
   }
 
-  componentDidMount(){
-      const requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-      };
+  search = (query) => {
+    this.props.youtube
+      .search(query)
+      .then(videos => this.setState({videos}));
+  }
 
-      fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyAQWyPMFLIW1-BEVXdaqSYPhsVsuKcbrYE", requestOptions)
-      .then(response => response.json())
-      .then(result => this.setState({videos : result.items}))
-      .catch(error => console.log('error', error));
+  componentDidMount(){
+    this.props.youtube
+      .mostPopular()
+      .then(videos => this.setState({videos}));
   }
 
   render() {
     return (
-      <>
-        <SearchHeader />
-        <VideoList videos={this.state.videos}/>
-      </>
+      <div className={styles.app}>
+        <SearchHeader onSearch={this.search} />
+        <VideoList videos={this.state.videos} />
+      </div>
     );
   }
 }
