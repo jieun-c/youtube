@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styles from "./video_item.module.css";
 
-class VideoItem extends Component {
+class VideoItem extends PureComponent {
   render() {
     const {
       video,
