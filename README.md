@@ -12,8 +12,8 @@ Youtube API 를 사용해서 동영상 인기목록과 검색목록을 보여준
 
 ## Skill
 
-ReactJS
-CSS Module
+- ReactJS
+- CSS Module
 
 <br>
 
